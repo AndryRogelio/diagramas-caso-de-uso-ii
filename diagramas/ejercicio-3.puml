@@ -1,0 +1,51 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Usuario" as U
+actor "Estudiante" as E
+actor "Profesor" as P
+actor "Administrador" as A
+
+U <|-- E
+U <|-- P
+U <|-- A
+
+package "Módulo de Seguridad y Autenticación" {
+    usecase "Iniciar Sesión" as UC_LOGIN
+    usecase "Autenticarse con 2FA" as UC_2FA
+}
+
+package "Módulo de Gestión Académica" {
+    usecase "Inscribir Asignaturas" as UC_INSCRIBIR
+    usecase "Verificar Prerrequisitos" as UC_PRERREQUISITOS
+    usecase "Publicar Calificaciones" as UC_CALIFICAR
+    usecase "Generar Reporte de Rendimiento" as UC_REPORTE
+}
+
+package "Módulo de Auditoría y Reportes" {
+    usecase "Auditar Registro del Sistema" as UC_AUDITAR
+}
+
+U --> UC_LOGIN
+UC_LOGIN ..> UC_2FA : <<include>>
+
+E --> UC_INSCRIBIR
+note on link
+  Requiere validación de estatus
+  financiero y académico activo.
+end note
+
+UC_INSCRIBIR ..> UC_PRERREQUISITOS : <<include>>
+UC_INSCRIBIR ..> UC_REPORTE : <<extend>>
+
+P --> UC_CALIFICAR
+A --> UC_AUDITAR
+
+note right of UC_2FA
+  Envío de token OTP mediante
+  correo institucional o SMS.
+end note
+
+note "Los registros de auditoría se almacenan bajo norma ISO 27001" as N_AUDIT
+@enduml
