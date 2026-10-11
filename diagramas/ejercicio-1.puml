@@ -1,0 +1,21 @@
+@startuml
+left to right direction
+skinparam packageStyle rectangle
+
+actor "Cliente" as C
+actor "Cajero" as CA
+
+package "Sistema Bancario" {
+    usecase "Consultar Saldo" as UC1
+    usecase "Retirar Dinero" as UC2
+    usecase "Transferir Fondos" as UC3
+    usecase "Registrar Depósito" as UC4
+}
+
+C --> UC1
+C --> UC2
+C --> UC3
+
+CA --> UC1
+CA --> UC4
+@enduml
