@@ -1,0 +1,32 @@
+{
+  "name": "plantuml-casos-de-uso-classroom",
+  "version": "1.0.0",
+  "description": "Ejercicios practicos para aprender diagramas de casos de uso con PlantUML y autocalificacion automatica con Jest.",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'Proyecto de diagramas de casos de uso iniciado. Usa npm test para ejecutar las pruebas.'",
+    "dev": "npm run test:watch",
+    "test": "jest --runInBand",
+    "test:basico": "jest --testPathPattern=\"1-.*\\.test\\.js$\"",
+    "test:intermedio": "jest --testPathPattern=\"2-.*\\.test\\.js$\"",
+    "test:avanzado": "jest --testPathPattern=\"3-.*\\.test\\.js$\"",
+    "test:all": "jest tests/ejercicio/",
+    "test:verbose": "jest --verbose",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "plantuml",
+    "uml",
+    "casos-de-uso",
+    "diagramas",
+    "github-classroom",
+    "jest",
+    "education"
+  ],
+  "author": "AndryRogelio",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
